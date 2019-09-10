@@ -1,0 +1,29 @@
+.heading-img{
+    height: 30%;
+    width: 26%;
+    margin: auto;
+    position: relative;
+}
+
+.card-main{
+    width: 60%;
+    margin: auto;
+}
+.top-icon{
+    margin: auto;
+}
+
+.fa-pencil:before {
+    position: absolute;
+    top: 12%;
+}
+
+
+.user-image-contact-save{
+    height: 10%;
+    width: 32%;
+    margin: auto;
+    border-radius: 50%;
+    border: 1px solid grey;
+}
+
