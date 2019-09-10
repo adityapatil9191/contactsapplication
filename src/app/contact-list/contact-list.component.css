@@ -1,0 +1,29 @@
+.btn{
+    margin:2%;
+    border-radius: 0px;
+}
+.button-list{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
+
+/* On screens that are 768px or more,*/
+@media screen and (min-width: 767px) {
+    .btn{
+        height: 35%;
+    }
+  }
+
+  /*On screens that are less than 768*/
+
+  @media screen and (max-width: 767px) {
+    .btn{
+        height: 85%;
+    }
+  }
+
+  .searchbox{
+      margin: 2%;
+  }
+  

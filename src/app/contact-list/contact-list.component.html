@@ -1,0 +1,47 @@
+<div class="container">
+    <!-- contacts card -->
+    <div class="card card-default">
+        <div class="row">
+            <div class="col-12 col-sm-6 col-md-10 text-center">
+                <h1 class="fa  fa-2x pulse" >My Contacts</h1>
+                <input class="form-control searchbox" type="text" placeholder="search contact">
+            </div>
+            <div class="col-md-2">
+                <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+            </div>
+        </div>
+    </div>
+    <div class="card card-default" id="card_contacts">
+        <div id="contacts" class="panel-collapse collapse show" aria-expanded="true" style="">
+            <ul class="list-group pull-down" id="contact-list">
+                <li class="list-group-item" *ngFor="let contact of contactList">
+                    <div class="row w-100">
+                        <div class="col-12 col-sm-6 col-md-3 px-0">
+                            <img src={{contact.image}} alt="Mike Anamendolla" class="rounded-circle mx-auto d-block img-fluid">
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6 text-center">
+                            <span class="fa  fa-2x text-success float-right pulse" title="online now"></span>
+                            <label class="name lead">{{contact.firstName}} {{contact.lastName}} </label>
+                            <br> 
+                            <span class="fa fa-map-marker fa-fw text-muted" data-toggle="tooltip" title="" ></span>
+                            <span class="text-muted">{{contact.address}}</span>
+                            <br>
+                            <span class="fa fa-phone fa-fw text-muted" data-toggle="tooltip" title="" ></span>
+                            <span class="text-muted small">{{contact.phoneNumber}}</span>
+                            <br>
+                            <span class="fa fa-envelope fa-fw text-muted" data-toggle="tooltip" data-original-title="" title=""></span>
+                            <span class="text-muted small text-truncate">{{contact.email}}</span>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-3 text-center text-sm-left button-list">
+                                <button class="btn btn-success">Call</button>
+                                <button class="btn btn-danger">Delete</button>
+                                <button class="btn btn-warning">Edit</button>
+                            </div>
+                    </div>
+                </li>
+            
+            </ul>
+            <!--/contacts list-->
+        </div>
+    </div>
+</div>
