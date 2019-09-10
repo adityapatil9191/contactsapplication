@@ -17,10 +17,11 @@
     <div class="card card-default" id="card_contacts">
         <div id="contacts" class="panel-collapse collapse show" aria-expanded="true" style="">
             <ul class="list-group pull-down" id="contact-list">
-                <li class="list-group-item" *ngFor="let contact of contactList">
+                <li class="list-group-item" *ngFor="let contact of contactList;let i = index">
                     <div class="row w-100">
                         <div class="col-12 col-sm-6 col-md-3 px-0">
-                            <img src={{contact.image}} alt="Mike Anamendolla" class="rounded-circle mx-auto d-block img-fluid">
+                            <img *ngIf="contact.image" src={{contact.image}} alt="Mike Anamendolla" class="rounded-circle mx-auto d-block img-fluid">
+                            <img *ngIf="!contact.image" src="./assets/sampleuser.png" alt="Mike Anamendolla" class="rounded-circle mx-auto d-block img-fluid">
                         </div>
                         <div class="col-12 col-sm-6 col-md-6 text-center">
                             <span class="fa  fa-2x text-success float-right pulse" title="online now"></span>
@@ -37,8 +38,8 @@
                         </div>
                         <div class="col-12 col-sm-6 col-md-3 text-center text-sm-left button-list">
                                 <button class="btn btn-success">Call</button>
-                                <button class="btn btn-danger">Delete</button>
-                                <button class="btn btn-warning" [routerLink]="['/edit']">Edit</button>
+                                <button class="btn btn-danger" (click)="deleteContact(i)">Delete</button>
+                                <button class="btn btn-warning" (click)="sendEachContact(contact)" [routerLink]="['/edit']">Edit</button>
                             </div>
                     </div>
                 </li>

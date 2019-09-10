@@ -1,34 +1,36 @@
 <div class="card card-main">
-        <button class="btn" (click)="uploadFile()"><img *ngIf="!imageUploaded" src="./assets/sampleuser.jpg" class="card-img-top heading-img" alt="..."></button>
+        <button class="btn" (click)="uploadFile()">
+            <img *ngIf="!imgURL" src="./assets/sampleuser.jpg" class="card-img-top heading-img" alt="...">
+        </button>
         <input [hidden] = "true" (change)="selectFile($event)" type="file" id="myFile">
         <img [src]="imgURL" class="user-image-contact-save" *ngIf="imgURL">
     <div class="card-body text-center bg-light">
-                <form>
+                <form *ngIf="eachContact">
                         <div class="form-row">
                         <div class="form-group col-md-6">
                             <label class="name lead" for="firstName">FirstName</label>
-                            <input type="text" class="form-control" id="firstName" placeholder="firstName">
+                            <input [(ngModel)]="firstName"  type="text" class="form-control" id="firstName" placeholder="firstName" name="firstName">
                         </div>
                         <div class="form-group col-md-6">
                             <label class="name lead" for="lastName">LastName</label>
-                            <input type="text" class="form-control" id="lastName" placeholder="lastName">
+                            <input [(ngModel)]="lastName"  type="text" class="form-control" id="lastName" placeholder="lastName" name="lastName">
                         </div>
                         </div>
                         <div class="form-group">
                         <label class="name lead" for="inputAddress">Address</label>
-                        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                        <input [(ngModel)]="inputAddress"  type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="inputAddress">
                         </div>
                         <div class="form-row">
                         <div class="form-group col-md-6">
                             <label class="name lead" for="Phone">Phone Number</label>
-                            <input type="text" class="form-control" placeholder="1232123" id="inputNumber">
+                            <input [(ngModel)]="Phone"  type="text" class="form-control" placeholder="1232123" id="inputNumber" name="phone">
                         </div>
                         <div class="form-group col-md-6">
                             <label class="name lead" for="email">Email</label>
-                            <input type="email" class="form-control" placeholder="abc@xyx.com" id="inputNumber">
+                            <input [(ngModel)]="email" type="email" class="form-control" placeholder="abc@xyx.com" id="inputNumber" name="email">
                         </div>
                         </div>
                     </form>
-            <a [routerLink]="['/contacts']" class="btn btn-primary">Save Contact</a>
+            <a (click)="editContact()" [routerLink]="['/contacts']" class="btn btn-primary">Save Contact</a>
         </div>
     </div>
