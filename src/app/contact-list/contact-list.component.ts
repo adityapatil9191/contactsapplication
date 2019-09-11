@@ -13,7 +13,10 @@ export class ContactListComponent implements OnInit {
   contactList = this.commonService.getContactList();
 
   deleteContact=(index)=>{
-    this.contactList.splice(index,1);
+    if(confirm("Are you sure delete this contact? ")===true){
+      this.contactList.splice(index,1);
+    }
+    
   }
 
   sendEachContact = (contact)=>{

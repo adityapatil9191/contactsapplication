@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { ContactListComponent } from './contact-list/contact-list.component';
 import { EditContactComponent } from './edit-contact/edit-contact.component';
 import { CreateContactComponent } from './create-contact/create-contact.component';
+import { SearchFilterPipe } from './search-filter.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     ContactListComponent,
     EditContactComponent,
-    CreateContactComponent
+    CreateContactComponent,
+    SearchFilterPipe
   ],
   imports: [
     BrowserModule,

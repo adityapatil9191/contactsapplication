@@ -31,3 +31,6 @@
       margin: auto;
   }
   
+  .img-fluid{
+      max-width: 57%;
+  }
