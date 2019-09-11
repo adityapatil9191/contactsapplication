@@ -7,15 +7,17 @@ import { GlobalService } from '../global.service';
   styleUrls: ['./create-contact.component.css']
 })
 export class CreateContactComponent implements OnInit {
-  imageUploaded = false;
-  public imagePath;
+  public imageUploaded:boolean = false;
+  public imagePath:string;
   imgURL: any;
   public message: string;
-  uploadFile=()=>{
+  
+  public uploadFile(){
     let myFile = document.getElementById("myFile");
     myFile.click();
   }
-  selectFile=(event)=>{
+
+  public selectFile=(event)=>{
     if(event.target.files[0].length===0){
       return
     }
@@ -33,14 +35,14 @@ export class CreateContactComponent implements OnInit {
     this.imageUploaded = true;
   }
   constructor(public commonService:GlobalService) { }
-  firstName;
-  lastName;
-  inputAddress;
-  Phone;
-  email;
+  firstName:string;
+  lastName:string;
+  inputAddress:string;
+  Phone:number;
+  email:string;
   ngOnInit() {
   }
-  addNewContact=()=>{
+  public addNewContact(){
     let newContact = {
       "firstName": this.firstName,
        "lastName": this.lastName,

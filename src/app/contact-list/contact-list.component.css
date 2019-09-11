@@ -29,8 +29,13 @@
 
   .align-plus{
       margin: auto;
+      margin-bottom: 0;
   }
   
   .img-fluid{
       max-width: 57%;
+  }
+
+  .heading-contacts{
+      margin-top: 2%
   }
