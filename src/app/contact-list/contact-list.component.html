@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-12 col-sm-6 col-md-10 text-center">
                 <h1 class="fa  fa-2x pulse" >My Contacts</h1>
-                <input class="form-control searchbox" type="text" placeholder="search contact">
+                <input [(ngModel)]="searchTerm" class="form-control searchbox" type="text" placeholder="search contact by name">
             </div>
             <div class="col-md-2 align-plus">
                 <button class="btn" [routerLink]="['/create']">
@@ -15,9 +15,9 @@
         </div>
     </div>
     <div class="card card-default" id="card_contacts">
-        <div id="contacts" class="panel-collapse collapse show" aria-expanded="true" style="">
+        <div id="contacts" class="panel-collapse collapse show" aria-expanded="true">
             <ul class="list-group pull-down" id="contact-list">
-                <li class="list-group-item" *ngFor="let contact of contactList;let i = index">
+                <li class="list-group-item" *ngFor="let contact of contactList | searchFilter:searchTerm ;let i = index">
                     <div class="row w-100">
                         <div class="col-12 col-sm-6 col-md-3 px-0">
                             <img *ngIf="contact.image" src={{contact.image}} alt="Mike Anamendolla" class="rounded-circle mx-auto d-block img-fluid">

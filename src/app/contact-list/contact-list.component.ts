@@ -9,7 +9,7 @@ import { GlobalService } from '../global.service';
 export class ContactListComponent implements OnInit {
 
   constructor(public commonService:GlobalService) { }
-
+  searchTerm;
   contactList = this.commonService.getContactList();
 
   deleteContact=(index)=>{
