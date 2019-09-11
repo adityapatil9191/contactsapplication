@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GlobalService } from '../global.service';
+import {RouterModule,Router} from '@angular/router';
 
 @Component({
   selector: 'app-edit-contact',
@@ -8,7 +9,8 @@ import { GlobalService } from '../global.service';
 })
 export class EditContactComponent implements OnInit {
 
-  constructor(public commonService:GlobalService) { }
+  constructor(public commonService:GlobalService,public router:Router) { }
+  index;
   eachContact;
   firstName;
   lastName;
@@ -17,13 +19,31 @@ export class EditContactComponent implements OnInit {
   email;
   imgURL;
   ngOnInit() {
-    this.eachContact = this.commonService.getEachContact();
+    this.eachContact = this.commonService.getEachContact().contact;
+    this.index = this.commonService.getEachContact().index;
     this.firstName = this.eachContact.firstName;
     this.lastName = this.eachContact.lastName
     this.inputAddress = this.eachContact.address;
     this.Phone = this.eachContact.phoneNumber;
     this.email = this.eachContact.email;
     this.imgURL = this.eachContact.image;
+  }
+
+  modifyContact(){
+    let modifiedObject = {
+      "firstName":this.firstName,
+      "lastName":this.lastName,
+      "email": this.email,
+      "phoneNumber": this.Phone,
+      "status": "active",
+      "address":this.inputAddress,
+      "image":this.imgURL
+    }
+    
+    this.commonService.contactList.splice(this.index,1,modifiedObject);
+    alert("Saved Successfully!!");
+    this.router.navigate(['/contacts']);
+    
   }
 
 }

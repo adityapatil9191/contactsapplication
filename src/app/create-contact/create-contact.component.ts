@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GlobalService } from '../global.service';
 
 @Component({
   selector: 'app-create-contact',
@@ -31,9 +32,26 @@ export class CreateContactComponent implements OnInit {
     }
     this.imageUploaded = true;
   }
-  constructor() { }
-
+  constructor(public commonService:GlobalService) { }
+  firstName;
+  lastName;
+  inputAddress;
+  Phone;
+  email;
   ngOnInit() {
+  }
+  addNewContact=()=>{
+    let newContact = {
+      "firstName": this.firstName,
+       "lastName": this.lastName,
+       "email": this.email,
+       "phoneNumber": this.Phone,
+       "status": "active",
+       "address":this.inputAddress,
+       "image":this.imgURL
+    }
+    this.commonService.contactList.push(newContact);
+
   }
 
 }
