@@ -64,21 +64,7 @@ export class GlobalService {
 
   ];
 
-  setEachContact=(contactDetails,index)=>{
-    this.eachContact = contactDetails;
-    this.index = index;
-    return this.eachContact;
-  }
-
-  getEachContact = ()=>{
-    let contactObject = {
-      contact:this.eachContact,
-      index:this.index,
-    }
-    return contactObject;
-  }
-
-  getContactList = ()=>{
+  public getContactList(){
     
     return this.contactList;
   }

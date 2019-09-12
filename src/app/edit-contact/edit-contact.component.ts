@@ -22,7 +22,7 @@ export class EditContactComponent implements OnInit {
   ngOnInit() {
     let currentContact = this.activatedRoute.snapshot.params.index;
     this.eachContact = this.commonService.contactList[currentContact];
-    this.index = this.commonService.getEachContact().index;
+    // this.index = this.commonService.getEachContact().index;
     this.firstName = this.eachContact.firstName;
     this.lastName = this.eachContact.lastName
     this.inputAddress = this.eachContact.address;
