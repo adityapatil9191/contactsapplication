@@ -8,6 +8,7 @@ import { EditContactComponent } from './edit-contact/edit-contact.component';
 import { CreateContactComponent } from './create-contact/create-contact.component';
 import { SearchFilterPipe } from './search-filter.pipe';
 import {ReactiveFormsModule} from '@angular/forms';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import {ReactiveFormsModule} from '@angular/forms';
     ContactListComponent,
     EditContactComponent,
     CreateContactComponent,
-    SearchFilterPipe
+    SearchFilterPipe,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
