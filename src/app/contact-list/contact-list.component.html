@@ -39,7 +39,7 @@
                         <div class="col-12 col-sm-6 col-md-3 text-center text-sm-left button-list">
                                 <button class="btn btn-success">Call</button>
                                 <button class="btn btn-danger" (click)="deleteContact(i)">Delete</button>
-                                <button class="btn btn-warning" (click)="sendEachContact(contact,i)" [routerLink]="['/edit']">Edit</button>
+                                <button class="btn btn-warning" (click)="sendEachContact(contact,i)" [routerLink]="['/edit',i]">Edit</button>
                             </div>
                     </div>
                 </li>

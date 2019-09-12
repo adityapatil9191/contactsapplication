@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GlobalService } from '../global.service';
-import {RouterModule,Router} from '@angular/router';
+import {RouterModule,Router,ActivatedRoute} from '@angular/router';
+
 
 @Component({
   selector: 'app-edit-contact',
@@ -9,7 +10,7 @@ import {RouterModule,Router} from '@angular/router';
 })
 export class EditContactComponent implements OnInit {
 
-  constructor(public commonService:GlobalService,public router:Router) { }
+  constructor(public commonService:GlobalService,public router:Router,public activatedRoute:ActivatedRoute) { }
   index;
   eachContact;
   firstName;
@@ -19,7 +20,8 @@ export class EditContactComponent implements OnInit {
   email;
   imgURL;
   ngOnInit() {
-    this.eachContact = this.commonService.getEachContact().contact;
+    let currentContact = this.activatedRoute.snapshot.params.index;
+    this.eachContact = this.commonService.contactList[currentContact];
     this.index = this.commonService.getEachContact().index;
     this.firstName = this.eachContact.firstName;
     this.lastName = this.eachContact.lastName

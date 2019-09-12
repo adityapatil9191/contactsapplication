@@ -55,7 +55,7 @@ export class CreateContactComponent implements OnInit {
     })
   }
   public addNewContact(){
-    console.log(this.contactForm.value);
+    console.log(this.contactForm);
     let newContact = {
       "firstName": this.firstName,
        "lastName": this.lastName,

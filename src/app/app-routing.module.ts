@@ -8,7 +8,7 @@ import { CreateContactComponent } from './create-contact/create-contact.componen
 
 const routes: Routes = [
   { path:  'contacts', component:  ContactListComponent},
-  { path:'edit',component:EditContactComponent},
+  { path:'edit/:index',component:EditContactComponent},
   {path:'create',component:CreateContactComponent},
   {path:'**',component:ContactListComponent},
   { path: '',
