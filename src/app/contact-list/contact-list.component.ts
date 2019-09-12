@@ -19,9 +19,9 @@ export class ContactListComponent implements OnInit {
     
   }
 
-  sendEachContact = (contact,i)=>{
-    this.commonService.setEachContact(contact,i);
-  }
+  // sendEachContact = (contact,i)=>{
+  //   this.commonService.setEachContact(contact,i);
+  // }
 
   ngOnInit() {
   }
