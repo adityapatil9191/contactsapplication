@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GlobalService } from '../global.service';
+import {FormControl,FormGroup, Validators} from '@angular/forms';
+import {RouterModule, Router} from "@angular/router";
 
 @Component({
   selector: 'app-create-contact',
@@ -34,15 +36,26 @@ export class CreateContactComponent implements OnInit {
     }
     this.imageUploaded = true;
   }
-  constructor(public commonService:GlobalService) { }
+  constructor(public commonService:GlobalService,public router:Router) { }
   firstName:string;
   lastName:string;
   inputAddress:string;
   Phone:number;
   email:string;
+  status: string;
+  contactForm:FormGroup;
   ngOnInit() {
+    this.contactForm = new FormGroup({
+      firstName:new FormControl('',[Validators.required]),
+      lastName:new FormControl('',[Validators.required]),
+      inputAddress:new FormControl('',[Validators.required]),
+      Phone:new FormControl('',[Validators.required,Validators.pattern('^[0-9]*$')]),
+      email: new FormControl('',[Validators.required,Validators.email]),
+      status: new FormControl('',[Validators.required])
+    })
   }
   public addNewContact(){
+    console.log(this.contactForm.value);
     let newContact = {
       "firstName": this.firstName,
        "lastName": this.lastName,
@@ -52,8 +65,11 @@ export class CreateContactComponent implements OnInit {
        "address":this.inputAddress,
        "image":this.imgURL
     }
-    this.commonService.contactList.push(newContact);
-
+    if(confirm("Save new contact?")===true){
+      this.commonService.contactList.push(newContact);
+      this.router.navigate(['/contacts']);
+    }
   }
+  
 
 }

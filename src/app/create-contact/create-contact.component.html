@@ -3,32 +3,41 @@
         <input [(ngModel)]="filePath" [hidden] = "true" (change)="selectFile($event)" type="file" id="myFile">
         <img [src]="imgURL" class="user-image-contact-save" *ngIf="imgURL">
     <div class="card-body text-center bg-light">
-                <form>
+                <form [formGroup]="contactForm" >
                         <div class="form-row">
                         <div class="form-group col-md-6">
                             <label class="name lead" for="firstName">FirstName</label>
-                            <input [(ngModel)]=firstName type="text" class="form-control" id="firstName" placeholder="firstName" name="firstName">
+                            <input [(ngModel)]=firstName formControlName = "firstName" type="text" class="form-control" id="firstName" placeholder="firstName" name="firstName">
                         </div>
                         <div class="form-group col-md-6">
                             <label class="name lead" for="lastName">LastName</label>
-                            <input [(ngModel)]=lastName type="text" class="form-control" id="lastName" placeholder="lastName" name="lastName">
+                            <input [(ngModel)]=lastName formControlName = "lastName" type="text" class="form-control" id="lastName" placeholder="lastName" name="lastName">
                         </div>
                         </div>
                         <div class="form-group">
                         <label class="name lead" for="inputAddress">Address</label>
-                        <input [(ngModel)]=inputAddress type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="inputAddress">
+                        <input [(ngModel)]=inputAddress formControlName = "inputAddress" type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="inputAddress">
                         </div>
                         <div class="form-row">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-4">
                             <label class="name lead" for="Phone">Phone Number</label>
-                            <input [(ngModel)]=Phone type="text" class="form-control" placeholder="1232123" id="inputNumber" name="Phone">
+                            <input [(ngModel)]=Phone formControlName = "Phone" type="text" class="form-control" placeholder="1232123" id="inputNumber" name="Phone">
+                            <span
+                                *ngIf="(Phone.dirty || Phone.touched) && Phone.invalid && Phone.errors.required"
+                                >
+                                Mobile is required.
+                                </span>
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-4">
                             <label class="name lead" for="email">Email</label>
-                            <input [(ngModel)]=email type="email" class="form-control" placeholder="abc@xyx.com" id="inputNumber" name="email">
+                            <input [(ngModel)]=email formControlName = "email" type="email" class="form-control" placeholder="abc@xyx.com" id="inputNumber" name="email">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="name lead" for="status">status</label>
+                            <input [(ngModel)]=status formControlName = "status" type="status" class="form-control" placeholder="status" id="status" name="status">
                         </div>
                         </div>
                     </form>
-            <button (click)="addNewContact()" class="btn btn-primary">Save Contact</button>
+            <button [disabled]="!contactForm.valid" (click)="addNewContact()" class="btn btn-primary">Save Contact</button>
         </div>
     </div>
