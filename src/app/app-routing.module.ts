@@ -11,11 +11,11 @@ const routes: Routes = [
   { path:  'contacts', component:  ContactListComponent},
   { path:'edit/:index',component:EditContactComponent},
   {path:'create',component:CreateContactComponent},
-  {path:'**',component:PageNotFoundComponent},
   { path: '',
   redirectTo: '/contacts',
   pathMatch: 'full'
 },
+{path:'**',component:PageNotFoundComponent}
 ];
 
 @NgModule({

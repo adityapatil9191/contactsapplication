@@ -19,7 +19,7 @@ export class CreateContactComponent implements OnInit {
     myFile.click();
   }
 
-  public selectFile=(event)=>{
+  public selectFile(event){
     if(event.target.files[0].length===0){
       return
     }
