@@ -3,7 +3,10 @@
             <img *ngIf="!imgURL" src="./assets/sampleuser.jpg" class="card-img-top heading-img" alt="...">
         </button>
         <input [hidden] = "true" (change)="selectFile($event)" type="file" id="myFile">
-        <img [src]="imgURL" class="user-image-contact-save" *ngIf="imgURL">
+        <button class="btn" (click)="uploadFile()">
+            <img [src]="imgURL" class="user-image-contact-save" *ngIf="imgURL">
+            <i class="fa fa-pencil fa-5" aria-hidden="true"></i>
+        </button>
     <div class="card-body text-center bg-light">
                 <form *ngIf="eachContact">
                         <div class="form-row">

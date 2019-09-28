@@ -1,7 +1,7 @@
 <div class="card card-main">
         <button class="btn" (click)="uploadFile()"><img *ngIf="!imageUploaded" src="./assets/sampleuser.jpg" class="card-img-top heading-img" alt="..."></button>
         <input [(ngModel)]="filePath" [hidden] = "true" (change)="selectFile($event)" type="file" id="myFile">
-        <img [src]="imgURL" class="user-image-contact-save" *ngIf="imgURL">
+        <img  [src]="imgURL" class="user-image-contact-save" *ngIf="imgURL">
     <div class="card-body text-center bg-light">
                 <form [formGroup]="contactForm" >
                         <div class="form-row">

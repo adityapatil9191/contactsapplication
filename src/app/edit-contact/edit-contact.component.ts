@@ -30,6 +30,34 @@ export class EditContactComponent implements OnInit {
     this.imgURL = this.eachContact.image;
   }
 
+  public imageUploaded:boolean = false;
+  public imagePath:string;
+  // imgURL: any;
+  public message: string;
+  
+  public uploadFile(){
+    let myFile = document.getElementById("myFile");
+    myFile.click();
+  }
+
+  public selectFile(event){
+    if(event.target.files[0].length===0){
+      return
+    }
+    let mimeType = event.target.files[0].type;
+    if (mimeType.match(/image\/*/) == null) {
+      this.message = "Only images are supported.";
+      return;
+    }
+    var reader = new FileReader();
+    this.imagePath = event.target.files;
+    reader.readAsDataURL(event.target.files[0]);
+    reader.onload = (_event)=>{
+      this.imgURL = reader.result;
+    }
+    this.imageUploaded = true;
+  }
+
   public modifyContact(){
     let modifiedObject = {
       "firstName":this.firstName,
