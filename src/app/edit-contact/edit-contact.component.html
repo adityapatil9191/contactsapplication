@@ -1,4 +1,5 @@
 <div class="card card-main">
+        <a [routerLink]="['/contacts']" ><i class="fa fa-arrow-left"></i></a>
         <button class="btn" (click)="uploadFile()">
             <img *ngIf="!imgURL" src="./assets/sampleuser.jpg" class="card-img-top heading-img" alt="...">
         </button>
@@ -8,32 +9,66 @@
             <i class="fa fa-pencil fa-5" aria-hidden="true"></i>
         </button>
     <div class="card-body text-center bg-light">
-                <form *ngIf="eachContact">
+                <form [formGroup]="contactForm" *ngIf="eachContact">
                         <div class="form-row">
                         <div class="form-group col-md-6">
                             <label class="name lead" for="firstName">FirstName</label>
-                            <input [(ngModel)]="firstName"  type="text" class="form-control" id="firstName" placeholder="firstName" name="firstName">
+                            <input [(ngModel)]="firstName" formControlName = "firstName" type="text" class="form-control" id="firstName" placeholder="firstName" name="firstName">
+                            <span
+                                *ngIf="(contactForm.controls.firstName.dirty || contactForm.controls.firstName.touched)">
+                                <span class="form-error" *ngIf="contactForm.controls.firstName.errors?.required">
+                                    First Name is required
+                                </span>
+                                </span>
                         </div>
                         <div class="form-group col-md-6">
                             <label class="name lead" for="lastName">LastName</label>
-                            <input [(ngModel)]="lastName"  type="text" class="form-control" id="lastName" placeholder="lastName" name="lastName">
+                            <input [(ngModel)]="lastName" formControlName = "lastName" type="text" class="form-control" id="lastName" placeholder="lastName" name="lastName">
+                            <span
+                            *ngIf="(contactForm.controls.lastName.dirty || contactForm.controls.lastName.touched)">
+                            <span class="form-error" *ngIf="contactForm.controls.lastName.errors?.required">
+                                    LastName is required
+                            </span>
+                            </span>
                         </div>
                         </div>
                         <div class="form-group">
                         <label class="name lead" for="inputAddress">Address</label>
-                        <input [(ngModel)]="inputAddress"  type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="inputAddress">
+                        <input [(ngModel)]="inputAddress" formControlName = "inputAddress" type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="inputAddress">
+                        <span
+                                *ngIf="(contactForm.controls.inputAddress.dirty || contactForm.controls.inputAddress.touched)">
+                                <span class="form-error" *ngIf="contactForm.controls.inputAddress.errors?.required">
+                                        Input Address is required
+                                </span>
+                                </span>
                         </div>
                         <div class="form-row">
                         <div class="form-group col-md-6">
                             <label class="name lead" for="Phone">Phone Number</label>
-                            <input [(ngModel)]="Phone"  type="text" class="form-control" placeholder="1232123" id="inputNumber" name="phone">
+                            <input [(ngModel)]="Phone" formControlName = "Phone" type="text" class="form-control" placeholder="1232123" id="inputNumber" name="phone">
+                            <span
+                                *ngIf="(contactForm.controls.Phone.dirty || contactForm.controls.Phone.touched)">
+                                <span class="form-error" *ngIf="contactForm.controls.Phone.errors?.pattern">
+                                    Should be a number
+                                </span>
+                                <span class="form-error" *ngIf="contactForm.controls.Phone.errors?.required">
+                                    Phone is required
+                                </span>
+                                </span>
+                                
                         </div>
                         <div class="form-group col-md-6">
                             <label class="name lead" for="email">Email</label>
-                            <input [(ngModel)]="email" type="email" class="form-control" placeholder="abc@xyx.com" id="inputNumber" name="email">
+                            <input [(ngModel)]="email" formControlName = "email" type="email" class="form-control" placeholder="abc@xyx.com" id="inputNumber" name="email">
+                            <span
+                                *ngIf="(contactForm.controls.email.dirty || contactForm.controls.email.touched)">
+                                <span class="form-error" *ngIf="contactForm.controls.email.errors?.required">
+                                    Email is required
+                                </span>
+                                </span>
                         </div>
                         </div>
                     </form>
-            <button  (click)="modifyContact()" class="btn btn-primary">Save Contact</button>
+            <button [disabled]="!contactForm.valid" (click)="modifyContact()" class="btn btn-primary">Save Contact</button>
         </div>
     </div>

@@ -1,4 +1,5 @@
 <div class="card card-main">
+        <a [routerLink]="['/contacts']" ><i class="fa fa-arrow-left"></i></a>
         <button class="btn" (click)="uploadFile()"><img *ngIf="!imageUploaded" src="./assets/sampleuser.jpg" class="card-img-top heading-img" alt="..."></button>
         <input [(ngModel)]="filePath" [hidden] = "true" (change)="selectFile($event)" type="file" id="myFile">
         <img  [src]="imgURL" class="user-image-contact-save" *ngIf="imgURL">

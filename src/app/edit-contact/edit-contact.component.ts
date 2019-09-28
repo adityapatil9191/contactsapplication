@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GlobalService } from '../global.service';
 import {RouterModule,Router,ActivatedRoute} from '@angular/router';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 
 @Component({
@@ -11,6 +12,7 @@ import {RouterModule,Router,ActivatedRoute} from '@angular/router';
 export class EditContactComponent implements OnInit {
 
   constructor(public commonService:GlobalService,public router:Router,public activatedRoute:ActivatedRoute) { }
+  contactForm:FormGroup;
   index;
   eachContact;
   firstName;
@@ -20,6 +22,14 @@ export class EditContactComponent implements OnInit {
   email;
   imgURL;
   ngOnInit() {
+    this.contactForm = new FormGroup({
+      firstName:new FormControl('',[Validators.required]),
+      lastName:new FormControl('',[Validators.required]),
+      inputAddress:new FormControl('',[Validators.required]),
+      Phone:new FormControl('',[Validators.required,Validators.pattern('^[0-9]*$')]),
+      email: new FormControl('',[Validators.required,Validators.email]),
+      status: new FormControl('',[Validators.required])
+    });
     let currentContact = this.activatedRoute.snapshot.params.index;
     this.eachContact = this.commonService.contactList[currentContact];
     this.firstName = this.eachContact.firstName;
